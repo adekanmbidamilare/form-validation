@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loginpg</title>
+    <style type="text/css">
+    *{ box-sizing: border-box; }
+    body{background-color: rgb(226, 214, 214);padding: 0px;margin: 0px;}
+    .container{max-width: 600px;background-color: white;margin: 0 auto;margin-top: -20px;}
+    .head{background-color: rgb(5, 107, 155);padding:30px;color: white;text-align: center;}
+    .section{padding: 10px;}
+    .title{font-size: 15px;color: black;line-height: 2px;font-weight: bold;}
+    input{width: 100%;border: 1px solid black;border-radius: 5px;height: 30px;}
+    #rad{width:15px;height:15px}
+    #btn{background-color: rgb(5, 107, 155); color: white;margin-top:20px ;padding: 8px;border-style: none;border-radius: 7px;}
+    .foot{padding: 10px;background-color: rgb(236, 236, 217);text-align: right;}
+
+    </style>
+
+    <script type="text/javascript">
+    function validation(){
+        if(document.registerationform.firstname.value==""){alert("Please provide your Firstname!");
+    document.registerationform.firstname.focus();return false}
+
+    if(document.registerationform.lastname.value==""){alert("Please provide your Lastname!");
+    document.registerationform.lastname.focus();return false}
+
+    if((registerationform.gender[0].checked==false) && (registerationform.gender[1].checked==false) && (registerationform.gender[2].checked==false)){
+        alert('please select your gender!');return false}
+
+    if(document.registerationform.state.value==-1 || document.registerationform.state.value==""){alert("please select your state of origin")
+    ; document.registerationform.state.focus();  return false}
+
+    var email=document.registerationform.email.value;
+    var atpos=email.indexOf('@');
+    var dotpos=email.lastIndexOf('.');
+    if(email=="" || atpos < 1 || (dotpos-atpos < 2)){alert("provide a correct email address");
+    document.registerationform.email.focus();return false }
+
+    if(document.registerationform.password.value=="" || document.registerationform.password.value.length<5){alert("provide your password that should be more than 5 value, for it to be strong");
+    document.registerationform.password.focus();return false}
+    if(document.registerationform.telphone.value=="" || document.registerationform.telphone.value.length<5){alert("provide your telephone number, which must be greater than 5 digits");
+    document.registerationform.telphone.focus();return false}
+    }
+    </script>
+</head>
+<body>
+    <form action="log.php" method="POST" name="registerationform" onsubmit="return(validation())">
+        <div class="container">
+            <div class="head">
+                <h1>Registeration Form</h1>
+            </div>
+            <div class="section">
+                <p class="title">First Name</p>
+                <input type="text" name="firstname" id="firstname">
+                <p class="title">Last Name</p>
+                <input type="text" name="lastname" id="lastname">
+                <p class="title">Gender</p>
+                <input type="radio" name="gender" id="rad" value="male">Male
+                <input type="radio" name="gender" id="rad" value="female">Female
+                <input type="radio" name="gender" id="rad" value="other">Other
+                <p class="title">State of Origin</p>
+                <select name="state">
+                    <option value="-1">select state</option>
+                    <option value="abuja">Abuja</option>
+                    <option value="ekiti">Ekiti</option>
+                    <option value="ondo">Ondo</option>
+                    <option value="osun">Osun</option>
+                    <option value="kwara">Kwara</option>
+                    <option value="others">Others</option>
+                </select>
+                <p class="title">Email</p>
+                <input type="email" name="email" id="email">
+                <p class="title">Password</p>
+                <input type="password" name="password" id="password">
+                <p class="title">Phone Number</p>
+                <input type="tel" name="telphone" id="telphone">
+                <button type="submit" id="btn">Submit</button>
+            </div>
+            <div class="foot">
+                <small>@ Technical Dley</small>  
+             </div>
+        </div>
+    </form>
+</body>
+</html>
